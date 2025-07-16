@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechCare - Device Repair</title>
+  <link rel="stylesheet" href="../css/bookSlot.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">TechCare</div>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home_customer') }}">Home</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('bookslot') }}">Book a Repair</a></li>
+        <li><a href="{{ url_for('about') }}">About Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="sign-in">
+      <button class="sign-in-button" onclick="toggleSignInOptions()">Sign In</button>
+      <div class="sign-in-options" style="display: none;">
+        <a href="{{ url_for('login_customer_page') }}"><button>Sign In</button></a>
+        <a href="{{ url_for('shop_login_page') }}"><button>Sign In as Shop</button></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Your gadget’s road to recovery — book a repair and bring it back to life with expert hands.</h1>
+      <p>Provide a few details about your device and choose a time that works for you — our experts will take it from there, ensuring a smooth and speedy fix.</p>
+    </div>
+    <div class="hero-img">
+      <img src="../images/@zaku_mods.jpeg" alt="Device Graphic" />
+    </div>
+  </section>
+
+  <section id="form-section" class="form-wrapper">
+    <h2>Book Your Gadget Repair</h2>
+    <form id="repairForm" enctype="multipart/form-data">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Gadget Type</label>
+          <select name="gadget_type" id="gadgetTypeSelect" required>
+            <option value="">Select</option>
+            <option value="Phone">Phone</option>
+            <option value="Tablet">Tablet</option>
+            <option value="Laptop">Laptop</option>
+            <option value="Game Console">Game Console</option>
+            <option value="Smartwatch">Smartwatch</option>
+            <option value="Software Defect">Software Defect</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="customGadgetGroup" style="display: none;">
+          <label>Specify Gadget Type</label>
+          <input type="text" id="customGadgetType" name="custom_gadget_type" placeholder="Enter gadget type"/>
+        </div>
+
+        <div class="form-group"><label>Model</label>
+          <input type="text" name="model" required />
+        </div>
+
+        <div class="form-group"><label>Problem Description</label>
+          <textarea name="problem_description" required></textarea>
+        </div>
+
+        <div class="form-group"><label>Name</label>
+          <input type="text" name="name" required />
+        </div>
+
+        <div class="form-group"><label>Email</label>
+          <input type="email" name="email" required />
+        </div>
+
+        <div class="form-group"><label>Phone</label>
+          <input type="tel" name="phone" required />
+        </div>
+
+        <div class="form-group"><label>PIN Code</label>
+          <input type="text" name="pincode" required />
+        </div>
+
+        <div class="form-group full-width"><label>Residential Address</label>
+          <textarea name="address" required></textarea>
+        </div>
+      </div>
+
+      <div class="submit-area">
+        <button type="button" id="select-shop-button">Select Shop</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="shop-selection-section" class="form-wrapper" style="display: none;">
+    <h3>Available Repair Shops</h3>
+    <div class="filter-wrapper">
+  <input type="text" id="shopSearchInput" placeholder="Search by name or services..." />
+
+  <select id="cityFilter">
+    <option value="">All Cities</option>
+    {% for city in shops | map(attribute='city') | unique %}
+      <option value="{{ city }}">{{ city }}</option>
+    {% endfor %}
+  </select>
+
+  <select id="typeFilter">
+    <option value="">All Shop Types</option>
+    {% for type in shops | map(attribute='shop_type') | unique %}
+      <option value="{{ type }}">{{ type }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+    <div id="shopOptions">
+      {% for shop in shops %}
+      <label class="shop-option">
+        <input type="radio" name="selected_shop" value="{{ shop.shop_id }}"
+       data-shopname="{{ shop.shop_name }}"
+       data-shopkeeper="{{ shop.owner_name }}"
+       data-shopphone="{{ shop.phone_no }}" />
+
+        <div>
+          <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{ shop.shop_name }}</h4>
+          <p>{{ shop.services_offered }}</p>
+          <p><strong>Type:</strong> {{ shop.shop_type }}</p>
+          <p><strong>Owner:</strong> {{ shop.owner_name }}</p>
+          <p><strong>Contact:</strong> {{ shop.phone_no }} | {{ shop.email }}</p>
+          <p><strong>Address:</strong> {{ shop.address }}, {{ shop.city }} - {{ shop.pin_code }}</p>
+        </div>
+        <span class="shop-price"></span>
+      </label>
+      {% endfor %}
+    </div>
+    <div id="noShopsMsg" style="display: none; text-align: center; font-weight: bold; margin-top: 1rem;">
+  🚫 No shops available in your area. Try changing the pincode or filters.
+</div>
+
+
+    <div class="submit-area">
+      <button type="button" id="book-slot-button" disabled>Book Slot</button>
+    </div>
+  </section>
+
+  <section id="booking-preview-section" class="form-wrapper" style="display: none;">
+    <h2 style="text-align: center; font-family: 'Times New Roman', Times, serif;">BOOKING PREVIEW</h2>
+    <div id="booking-preview-content"></div>
+    <div class="submit-area">
+      <button type="button" id="confirm-booking-button">Confirm Booking</button>
+      <button type="button" id="cancel-booking-button">Cancel</button>
+    </div>
+  </section>
+
+  <script>
+    function toggleSignInOptions() {
+      const options = document.querySelector(".sign-in-options");
+      options.style.display = options.style.display === "none" ? "block" : "none";
+    }
+  </script>
+  <script src="../js/bookslot.js"></script>
+</body>
+</html>

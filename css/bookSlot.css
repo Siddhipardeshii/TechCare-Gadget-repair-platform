@@ -1,0 +1,614 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f8f9fa;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #101820;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.sign-in {
+  display: flex;
+  align-items: center;
+}
+
+.sign-in-button {
+  background-color: #101820; /* Dark background */
+  color: white; /* Text color */
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sign-in-button:hover {
+  background-color: #3a3f42; /* Lighter shade on hover */
+}
+
+.sign-in-options {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-in-options button {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.sign-in-options button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Adjust sign-in button position */
+.sign-in {
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+/* Optional: hide nav on small screens */
+@media screen and (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 2rem;
+    background-color: #e9ecef;
+}
+
+.hero-img img{
+height: 400px;
+width: 800px;
+}
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background-color: #101820;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #c6f27e;
+    text-align: center;
+    padding: 1rem;
+}
+
+  
+  /* Form Section */
+  .form-wrapper {
+    max-width: 1100px;
+    margin: 4em auto;
+    padding: 2em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .form-wrapper h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 2;
+  }
+  
+  label {
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+  
+  input, select, textarea {
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .submit-area {
+    text-align: center;
+    margin-top: 2em;
+  }
+  
+  button {
+    background-color: #0f1a24;
+    color: white;
+    padding: 0.8em 2em;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #081118;
+  }
+  
+
+/* Shop Selection Styles */
+#shop-selection {
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.shop-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shop-option:hover {
+  background-color: #f9f9f9;
+}
+
+.shop-option label {
+  font-size: 16px;
+  color: #333;
+}
+
+.shop-option input[type="radio"] {
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+  
+  /* Adjusting button size for form submission */
+  .submit-area button {
+    padding: 1rem 2rem; /* Making the button a little bigger */
+  }
+  
+
+  #shopOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.shop-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background-color: #fffdf5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.shop-card:hover {
+  transform: translateY(-2px);
+}
+
+.shop-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.shop-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: #eee;
+}
+
+.shop-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.select-shop input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.book-cleaner-btn {
+  background-color: #0c3d3b;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  cursor: not-allowed; /* Only for layout mimicry – disabled */
+}
+
+.book-cleaner-btn:enabled {
+  cursor: pointer;
+}
+
+.shop-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.confirm-btn {
+  background-color: #0c3d3b;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.confirm-btn:hover {
+  background-color: #0a322f;
+}
+
+.shop-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: #fff;
+  border: 2px solid transparent;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.shop-card:hover,
+.shop-card input[type="radio"]:checked + .shop-details {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.shop-card input[type="radio"] {
+  margin-top: 0.5rem;
+  accent-color: #007bff;
+}
+
+.shop-card .shop-details {
+  flex: 1;
+}
+
+.shop-card input[type="radio"] {
+  transform: scale(1.2);
+}
+
+.scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.shop-list.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  scroll-behavior: smooth;
+  padding: 1rem 0;
+  flex: 1;
+}
+
+.scroll-btn {
+  background: #0c3d3b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 1;
+}
+
+.scroll-btn:hover {
+  background-color: #0a322f;
+}
+
+.scroll-btn.left {
+  margin-right: 0.5rem;
+}
+
+.scroll-btn.right {
+  margin-left: 0.5rem;
+}
+
+/* Shop Selection Styles */
+.all-shops-section {
+  margin-top: 2rem;
+  background-color: #f9f9f9; /* Light background */
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+}
+
+.all-shops-section h3 {
+  text-align: center;
+  font-size: 1.75rem; /* Slightly larger heading */
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-weight: 600; /* Semi-bold font */
+}
+
+/* Carousel container layout */
+.shop-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem; /* Increased gap for better spacing */
+}
+
+.nav-btn {
+  background-color: #0c3d3b; /* Dark teal */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background-color: #0a322f;
+  transform: scale(1.1); /* Slight scale on hover */
+}
+
+/* Carousel window - only shows one card at a time */
+.carousel-window {
+  width: 100%;
+  max-width: 700px; /* Increased max-width */
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px; /* More rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Track holds all cards */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); /* Easing function */
+  width: 100%;
+}
+
+/* Individual shop card */
+.shop-card {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  background-color: #fff; /* White background */
+  padding: 2rem;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+
+.shop-card:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+.shop-card input[type="radio"] {
+  transform: scale(1.4); /* Slightly larger radio buttons */
+  accent-color: #007bff;
+  margin-right: 1.5rem;
+}
+
+.shop-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.shop-content h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  color: #333;
+  font-weight: 500; /* Slightly bolder font */
+}
+
+.shop-content p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.4; /* Improved line height */
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .carousel-window {
+    max-width: 95%;
+  }
+
+  .shop-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .shop-card input[type="radio"] {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+}
+
+#shop-selection-section {
+  margin-top: 20px;
+  background-color: #e9ecef;
+}
+
+#booking-preview-section {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#booking-preview-content {
+  margin-bottom: 10px;
+}
+
+#book-slot-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+#shopOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.shop-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.shop-option:hover {
+  background-color: #f9f9f9;
+}
+
+.shop-option input[type="radio"] {
+  margin-right: 15px;
+  transform: scale(1.2);
+}
+
+.shop-option h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.shop-option p {
+  margin: 0.2rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.shop-price {
+  font-weight: bold;
+  color: #0c3d3b;
+  font-size: 1.2rem;
+}
+
+.filter-wrapper {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#shopSearchInput,
+#cityFilter,
+#typeFilter {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+

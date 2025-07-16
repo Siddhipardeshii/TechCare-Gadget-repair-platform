@@ -1,0 +1,267 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8f9fa;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #101820;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 2rem;
+    background-color: #e9ecef;
+}
+
+.hero-img img{
+height: 400px;
+width: 800px;
+}
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background-color: #101820;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #c6f27e;
+    text-align: center;
+    padding: 1rem;
+}
+
+.sign-in {
+    display: flex;
+    align-items: center;
+}
+
+.sign-in-button {
+    background-color: #101820; /* Dark background */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-button:hover {
+    background-color: #3a3f42; /* Lighter shade on hover */
+}
+
+.sign-in-options {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-in-options button {
+    background-color: #007bff; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-options button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.why-choose-us, .how-it-works {
+    padding: 2rem;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.features, .steps {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.feature-item, .step {
+    background-color: #1b1f23; /* Dark background for features */
+    color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem;
+    flex: 0 0 calc(25% - 2rem); /* Responsive flex items */
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #4caf50; /* Green for checkmark */
+}
+
+h2 {
+    margin: 1.5rem 0;
+    font-size: 2rem;
+    color: #101820; /* Dark color for headings */
+}
+
+.steps {
+    text-align: left; /* Align steps to the left */
+}
+
+.step {
+    background-color: #f8f9fa; /* Light background for steps */
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem;
+    flex: 1; /* Allow steps to grow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.steps h3,.steps p{
+    color: #000;
+
+}
+
+.how-it-works{
+    background-image: url('../images/new.jpg');
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* Hamburger and slide-out menu */
+.hamburger {
+    font-size: 1.8rem;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+  
+  .slideout-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 360px;
+    height: 100vh;
+    background-color: #0d1c1f;
+    color: white;
+    padding: 1.5rem;
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
+  }
+  
+  .slideout-menu.open {
+    right: 0;
+  }
+  
+  .slideout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menu-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .close-btn {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .slideout-menu h2, .slideout-menu h3 {
+    margin-top: 1.5rem;
+  }
+  
+  .service-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .service-icons div {
+    width: 30%;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .service-icons img {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .slideout-menu hr {
+    border: 0;
+    height: 1px;
+    background-color: #2c3e50;
+    margin: 1rem 0;
+  }
+  
+  /* Adjust sign-in button position */
+  .sign-in {
+    margin-right: auto;
+    margin-left: 2rem;
+  }
+  
+  /* Optional: hide nav on small screens */
+  @media screen and (max-width: 768px) {
+    nav ul {
+      display: none;
+    }
+  }
+  

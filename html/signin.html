@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="../css/style1.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h3>Sign in to TECHCARE – Track repairs, manage gadgets, and get expert help anytime.</h3>
+            <form id="registerForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Name" required>
+
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Address" required>
+
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+
+                <button type="submit">Register Your Journey</button>
+            </form>
+            <p>Already have an account? <a href="{{ url_for('login_customer_page') }}">Login here</a></p>
+        </div>
+    </div>
+
+    <div class="deco">
+        <img src="../images/sign-img.jpeg" alt="Travel Adventure" />
+        <div class="features">
+            <h2>EXCLUSIVE OFFERS:</h2>
+            <p>Be the first to know our latest offers and deals.</p><br/>
+            <h2>PERSONALIZED RECOMMENDATIONS:</h2>
+            <p>Best recommendations according to your previous searches.</p><br/>
+            <h2>SEAMLESS EXPERIENCES:</h2>
+            <p>24/7 services to all our customers.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            const data = {
+                name: document.getElementById("name").value,
+                address: document.getElementById("address").value,
+                phone: document.getElementById("phone").value,
+                email: document.getElementById("email").value,
+                password: password
+            };
+
+            fetch("/signin.html", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.message === "Registration successful!") {
+                        alert("Registration successful! Redirecting to login...");
+                        window.location.href = "/loginPage";
+                    } else {
+                        alert("Registration failed: " + result.message);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("An error occurred. Please try again later.");
+                });
+        });
+    </script>
+</body>
+</html>

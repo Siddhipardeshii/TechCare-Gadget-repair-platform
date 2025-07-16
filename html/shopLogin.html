@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopkeeper Login</title>
+  <link rel="stylesheet" href="../css/shopLogin.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <img src="../images/nandini.jpeg" alt="GadgetFix Workspace">
+      <div class="tagline">
+        <h1><span>Renew.</span> <span>Refurbish.</span> <span>Reconstruct.</span></h1>
+        <p>BRINGING YOUR GADGETS BACK TO LIFE.</p>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="login-card">
+        <h2>Welcome Back <br><strong>GADGET SAVER! </strong></h2>
+        <p class="subtitle">Log in and continue helping the world repair, not replace — because every device deserves a second chance.</p>
+        <form id="loginForm">
+          <input type="email" id="email" placeholder="Email" required />
+          <input type="password" id="password" placeholder="Password" required />
+          <p class="register-link">New to the website? <a href="{{ url_for('signinShop') }}">Create new account</a>
+          </p>
+          <button type="submit">Login</button>
+        </form>
+        <p id="errorMsg" style="color: red; text-align: center; margin-top: 10px;"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch('http://127.0.0.1:5000/shopLogin', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          window.location.href = data.redirect;  
+        } else {
+          document.getElementById('errorMsg').innerText = "Incorrect email or password.";
+        }
+      } catch (error) {
+        console.error('Login Error:', error);
+        document.getElementById('errorMsg').innerText = "Something went wrong. Try again later.";
+      }
+    });
+  </script>
+</body>
+</html>

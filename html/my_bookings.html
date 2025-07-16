@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings</title>
+    <link rel="stylesheet" href="/css/styleHome.css">
+</head>
+<body>
+    <header>
+        <div class="logo">TechCare</div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home_customer') }}">Home</a></li>
+                <li><a href="{{ url_for('services') }}">Services</a></li>
+                <li><a href="{{ url_for('bookslot') }}">Book a Repair</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="my-bookings">
+        <h2>My Bookings</h2>
+        {% if bookings %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Shop Name</th>
+                        <th>Gadget Type</th>
+                        <th>Model</th>
+                        <th>Problem Description</th>
+                        <th>Status</th>
+                        <th>Booking Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                        <tr>
+                            <td>{{ booking.booking_id }}</td>
+                            <td>{{ booking.shop_name }}</td>
+                            <td>{{ booking.gadget_type }}</td>
+                            <td>{{ booking.model }}</td>
+                            <td>{{ booking.problem_description }}</td>
+                            <td>{{ booking.status }}</td>
+                            <td>{{ booking.created_at }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No bookings found.</p>
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>&copy; 2025 TechCare</p>
+    </footer>
+</body>
+</html>

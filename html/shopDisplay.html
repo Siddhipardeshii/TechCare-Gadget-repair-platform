@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechCare - Device Repair</title>
+  <link rel="stylesheet" href="../css/shopDisplay.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">TechCare</div>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home_customer') }}">Home</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('bookslot') }}">Book a Repair</a></li>
+        <li><a href="{{ url_for('about') }}">About Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="sign-in">
+      <button class="sign-in-button" onclick="toggleSignInOptions()">Sign In</button>
+      <div class="sign-in-options" style="display: none;">
+        <a href="{{ url_for('login_customer_page') }}"><button>Sign In</button></a>
+        <a href="{{ url_for('shop_login_page') }}"><button>Sign In as Shop</button></a>
+      </div>   
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Your gadget’s road to recovery — book a repair and bring it back to life with expert hands.</h1>
+      <p>Provide a few details about your device and choose a time that works for you — our experts will take it from there, ensuring a smooth and speedy fix.</p>
+    </div>
+
+  </section>
+
+    <div class="form-group full-width all-shops-section">
+  <h3>Available Repair Shops</h3>
+  <div class="shop-carousel">
+    <button type="button" class="nav-btn left" onclick="scrollShops(-1)">&#8592;</button>
+    <div class="carousel-window">
+      <div class="carousel-track">
+        {% for shop in shops %}
+        <label class="shop-card">
+          <input type="radio" name="selected_shop" value="{{ shop.shop_id }}" {% if loop.first %}checked{% endif %} />
+          <div class="shop-content">
+            <h4>{{ shop.shop_name }}</h4>
+            <p><strong>Type:</strong> {{ shop.shop_type }}</p>
+            <p><strong>Services:</strong> {{ shop.services_offered }}</p>
+            <p><strong>Owner:</strong> {{ shop.owner_name }}</p>
+            <p><strong>Contact:</strong> {{ shop.phone_no }} | {{ shop.email }}</p>
+            <p><strong>Address:</strong> {{ shop.address }}, {{ shop.city }} - {{ shop.pin_code }}</p>
+          </div>
+        </label>
+        {% endfor %}
+      </div>
+    </div>
+    <button type="button" class="nav-btn right" onclick="scrollShops(1)">&#8594;</button>
+  </div>
+</div>
+
+
+
+      <div class="submit-area">
+        <button type="submit">Book Slot</button>
+      </div>
+    </form>
+
+  <script>
+  function toggleSignInOptions() {
+    const options = document.querySelector(".sign-in-options");
+    options.style.display = options.style.display === "none" ? "block" : "none";
+  }
+
+ let currentIndex = 0;
+
+function scrollShops(direction) {
+  const track = document.querySelector('.carousel-track');
+  const cards = document.querySelectorAll('.shop-card');
+  const totalCards = cards.length;
+
+  currentIndex += direction;
+
+  if (currentIndex < 0) currentIndex = 0;
+  if (currentIndex >= totalCards) currentIndex = totalCards - 1;
+
+  const offset = currentIndex * 100;
+  track.style.transform = `translateX(-${offset}%)`;
+
+  // Automatically select the shop's radio button
+  const selectedCard = cards[currentIndex];
+  const radio = selectedCard.querySelector('input[type="radio"]');
+  if (radio) radio.checked = true;
+}
+
+
+  const slides = document.querySelectorAll('.carousel-slide');
+  const indicator = document.getElementById('carousel-indicator');
+  let index = 0;
+
+  function showSlide(i) {
+    slides.forEach((slide, idx) => {
+      slide.classList.toggle('active', idx === i);
+    });
+    indicator.textContent = `${i + 1}/${slides.length}`;
+  }
+
+  document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  });
+
+  document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+  });
+
+  showSlide(index);
+
+
+
+</script>
+
+</body>
+</html>

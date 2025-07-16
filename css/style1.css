@@ -1,0 +1,111 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: black;
+}
+
+.container {
+    width: 50%;
+    height: 97%;
+    margin-top: 10px;
+    background-color: white;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.box {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0e110e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.deco {
+    width: 50%;
+    height: 100vh;
+    background-color: black;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Ensure the features div is positioned relative to this */
+}
+
+.deco img {
+    width: 97%;
+    height: 97%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.features {
+    width: 80%;
+    height: 35%;
+    position: absolute; /* Position over the image */
+    top: 55%; /* Adjust as necessary */
+    color: white;
+    background-color: rgba(30, 29, 29, 0.773); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.features h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+    
+}
+
+.features p {
+    font-size: 13px;
+    margin: 5px 0;
+    color: white;
+    font-weight:lighter;
+    font-family: 'Courier New', Courier, monospace;
+}

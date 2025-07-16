@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register Your Repair Shop</title>
+  <link rel="stylesheet" href="../css/shopSignin.css" />
+</head>
+<body>
+
+  <header class="header-banner">
+    <img src="../images/shop.jpeg" alt="Shop Banner"> 
+  </header>
+
+  <main class="form-section">
+    <div class="form-card">
+      <h2>Register Your Shop on TechCare</h2>
+      <p class="subtitle">Help people repair their devices — fast, reliable, trusted!</p>
+      <form id="signupForm">
+        <div class="input-grid">
+          <div class="form-group">
+            <label for="ownerName">Owner's Name</label>
+            <input type="text" id="ownerName" required />
+          </div>
+          <div class="form-group">
+            <label for="shopName">Shop Name</label>
+            <input type="text" id="shopName" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required />
+          </div>
+          <div class="form-group">
+            <label for="shopType">Shop Type</label>
+            <select id="shopType" required>
+              <option value="">Select</option>
+              <option>Mobile Repair</option>
+              <option>Laptop Repair</option>
+              <option>TV Repair</option>
+              <option>Multi-Service</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="services">Services Offered</label>
+            <textarea id="services" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="address">Shop Address</label>
+            <textarea id="address" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" required />
+          </div>
+          <div class="form-group">
+            <label for="pincode">Pin Code</label>
+            <input type="text" id="pincode" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Create Password</label>
+            <input type="password" id="password" required />
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" required />
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Register Shop</button>
+      </form>
+      <p class="login-link">Already Registered? <a href="../html/shopLogin.html">Login</a></p>
+      <p class="login-link">Go back to Home Page <a href="../html/home.html">Click here</a></p>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+
+      const data = {
+        owner_name: document.getElementById('ownerName').value,
+        shop_name: document.getElementById('shopName').value,
+        email: document.getElementById('email').value,
+        phone_no: document.getElementById('phone').value,
+        shop_type: document.getElementById('shopType').value,
+        services_offered: document.getElementById('services').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        pin_code: document.getElementById('pincode').value,
+        password: password
+      };
+
+      try {
+        const response = await fetch('/registerShop', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        alert(result.message);
+
+        if (response.ok) {
+          document.getElementById('signupForm').reset();
+          window.location.href = '/shopLogin'; // redirect on success
+        }
+
+      } catch (err) {
+        console.error('Error:', err);
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - TechCare</title>
+  <link rel="stylesheet" href="../css/about.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">TechCare</div>
+      
+        <nav>
+          <ul>
+            <li><a href="{{ url_for('home_customer') }}">Home</a></li>
+            <li><a href="{{ url_for('services') }}">Services</a></li>
+            <li><a href="{{ url_for('bookslot') }}">Book a Repair</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+          </ul>
+        </nav>
+      
+        <div class="sign-in">
+          <button class="sign-in-button" onclick="toggleSignInOptions()">Sign In</button>
+          <div class="sign-in-options" style="display: none;">
+            <a href="{{ url_for('login_customer_page') }}"><button>Sign In</button></a>
+            <a href="{{ url_for('shop_login_page') }}"><button>Sign In as Shop</button></a>
+          </div>   
+        </div>
+      
+      </header>
+
+  <!-- Hero Section -->
+
+  <section class="hero">
+    <div class="hero-content">
+        <h1>Connecting You to Trusted Local Repair Experts</h1>
+        <p>TechCare bridges the gap between customers and skilled local repair shops for fast, efficient, and affordable device repairs. We value your time and your tech!</p>
+    </div>
+    <div class="hero-img">
+        <img src="../images/about1.jpeg" alt="About TechCare">
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="values-section">
+    <h2>Our Mission</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Empower Local Shops</h3>
+        <p>We enable repair shops to expand their reach and connect with more customers online.</p>
+      </div>
+      <div class="card">
+        <h3>Customer First</h3>
+        <p>Our priority is convenience, transparency, and trust for every device repaired.</p>
+      </div>
+      <div class="card">
+        <h3>Quality & Speed</h3>
+        <p>We connect you to verified professionals who fix your gadgets fast and right.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Choose your device and issue.</li>
+      <li>Find nearby trusted repair shops.</li>
+      <li>Compare & book your repair.</li>
+      <li>Track status and get your device back fast!</li>
+    </ol>
+  </section>
+
+  <!-- Background Visual Section -->
+  <section class="image-section">
+    <div class="overlay-content">
+      <h2>Quick. Local. Trusted.</h2>
+      <p>Say goodbye to long waits and uncertainty. Book with confidence, right in your neighborhood.</p>
+    </div>
+    <div class="bg-image">
+      <img src="../images/jjj.jpeg" alt="Trusted Local Repair">
+    </div>
+  </section>
+
+  <!-- Customer Gallery -->
+  <section class="gallery-section">
+    <h2>What Our Customers Say</h2>
+    <div class="gallery">
+      <div class="gallery-card">
+        <img src="../images/review.png" alt="Customer Review 1">
+        <h5>Yash Suryavanshi</h5>
+        <p>"Fast repair and great service!"</p>
+      </div>
+      <div class="gallery-card">
+        <img src="../images/rushi kota.jpg" alt="Customer Review 2">
+        <h5>Arjun Rawat</h5>
+        <p>"My laptop works like new again."</p>
+      </div>
+      <div class="gallery-card">
+        <img src="../images/Employee Pictures _ Freepik.jpg" alt="Customer Review 3">
+        <h5>Sakshi Pawar</h5>
+        <p>"Highly recommended for local fixes."</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleSignInOptions() {
+      const options = document.querySelector('.sign-in-options');
+      options.style.display = options.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleSignInOptions() {
+      const options = document.querySelector('.sign-in-options');
+      options.style.display = options.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+
+</body>
+</html>

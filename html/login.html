@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h3 class="heading">YOUR GATEWAY TO <br />RENEWABLE GADGETS</h3>
+      <p class="description">
+        Revive your gadgets and reclaim your peace of mind <br />
+        today—because every device deserves a second chance.
+      </p>
+      <form id="loginForm">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Email" required />
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Password" required />
+
+        <button class="login-btn" type="submit">Login</button>
+        <p class="register-link" style="color: black;">New to the website? <a href="{{ url_for('signin') }}">Create new account</a>
+      </form>
+    </div>
+  </div>
+
+  <div class="deco">
+    <img class="img" src="../images/download (1).jpeg" alt="Gadgets Repair" />
+    <div class="text">
+      <div class="content">
+        <h1 class="title">
+          Renew. Refurbish. Reconstruct.
+          <div class="aurora">
+            <div class="aurora__item"></div>
+            <div class="aurora__item"></div>
+            <div class="aurora__item"></div>
+            <div class="aurora__item"></div>
+          </div>
+        </h1>
+        <p class="subtitle">BRINGING YOUR GADGETS BACK TO LIFE.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error popup -->
+  <div id="errorPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-box">
+      <p id="errorMessage">Something went wrong.</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('loginForm');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+
+      // Get the 'next' parameter from URL if present
+      const urlParams = new URLSearchParams(window.location.search);
+      const nextPage = urlParams.get('next'); // e.g., 'bookslot'
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password, next: nextPage })
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              window.location.href = data.redirect || '/home.html';
+            } else {
+              showPopup('Invalid email or password. Please try again.');
+              clearInputs();
+            }
+          })
+          .catch(err => {
+            console.error('Error during login:', err);
+            showPopup('Server error. Please try again later.');
+            clearInputs();
+          });
+      });
+
+      function clearInputs() {
+        emailInput.value = '';
+        passwordInput.value = '';
+      }
+
+      function showPopup(message) {
+        const popup = document.getElementById('errorPopup');
+        const messageBox = document.getElementById('errorMessage');
+        if (popup && messageBox) {
+          messageBox.textContent = message;
+          popup.style.display = 'flex';
+        }
+      }
+
+      window.closePopup = function () {
+        document.getElementById('errorPopup').style.display = 'none';
+      };
+    });
+  </script>
+</body>
+</html>

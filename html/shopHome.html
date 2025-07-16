@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopkeeper Dashboard - TechCare</title>
+  <link rel="stylesheet" href="../css/shopHome.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <nav class="sidebar">
+      <h2>TechCare</h2>
+      <ul>
+        <li><a href="#overview">Dashboard Overview</a></li>
+        <li><a href="#requests">Manage Repair Requests</a></li>
+        <li><a href="#calendar">Appointment Calendar</a></li>
+        <li><a href="#services">Service Management</a></li>
+        <li><a href="#profile">Shop Profile</a></li>
+        <li><a href="#reviews">Ratings & Reviews</a></li>
+        <li><a href="#messages">Messages</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#billing">Billing</a></li>
+        <li><a href="#settings">Account Settings</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <section id="overview" class="card">
+        <h3>Dashboard Overview</h3>
+        <div class="overview-grid">
+          <div class="overview-item">Today's Appointments: <span id="appointmentsCount">3</span></div>
+          <div class="overview-item">Pending Requests: <span id="pendingRequests">5</span></div>
+          <div class="overview-item">Completed Jobs: <span id="completedJobs">12</span></div>
+          <div class="overview-item">New Messages: <span id="newMessages">2</span></div>
+          <div class="overview-item">Alerts: <span id="alerts">1</span></div>
+        </div>
+      </section>
+
+      <section id="requests" class="card">
+  <h3>Manage Repair Requests</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Device</th>
+        <th>Model</th>
+        <th>Issue</th>
+        <th>Booking Status</th>
+        <th>Repair Status</th>
+      </tr>
+    </thead>
+    <tbody id="bookingsTableBody">
+      <!-- Populated by JS -->
+    </tbody>
+  </table>
+</section>
+
+
+      <section id="calendar" class="card">
+        <h3>Appointment Calendar</h3>
+        <div id="calendar">[Calendar Placeholder]</div>
+      </section>
+
+      <section id="services" class="card">
+        <h3>Service Management</h3>
+        <button onclick="addService()">+ Add Service</button>
+        <ul id="serviceList"></ul>
+      </section>
+
+      <section id="profile" class="card">
+        <h3>Shop Profile</h3>
+        <button onclick="editProfile()">Edit Shop Info</button>
+      </section>
+
+      <section id="reviews" class="card">
+        <h3>Ratings & Reviews</h3>
+        <div id="reviewList">[Review list placeholder]</div>
+      </section>
+
+      <section id="messages" class="card">
+        <h3>Messages</h3>
+        <div id="chatInbox">[Message inbox placeholder]</div>
+      </section>
+
+      <section id="analytics" class="card">
+        <h3>Analytics</h3>
+        <div id="analyticsData">[Charts Placeholder]</div>
+      </section>
+
+      <section id="billing" class="card">
+        <h3>Billing & Transactions</h3>
+        <div id="invoiceList">[Invoices Placeholder]</div>
+      </section>
+
+      <section id="settings" class="card">
+        <h3>Account Settings</h3>
+        <button onclick="changePassword()">Change Password</button>
+        <button onclick="logout()">Logout</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/shopHome.js"></script>
+</body>
+</html>

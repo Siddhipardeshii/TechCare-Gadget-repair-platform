@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechCare - Device Repair</title>
+  <link rel="stylesheet" href="/css/styleHome.css"/>
+</head>
+<body>
+  <header>
+    <div class="logo">TechCare</div>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home_customer') }}">Home</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="javascript:void(0);" onclick="checkLoginAndRedirect()">Book a Repair</a></li>
+        <li><a href="{{ url_for('about') }}">About Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="sign-in">
+      <button class="sign-in-button" onclick="toggleSignInOptions()">Sign In</button>
+      <div class="sign-in-options" style="display: none;">
+        <a href="{{ url_for('login_customer_page') }}"><button>Sign In</button></a>
+        <a href="{{ url_for('shop_login_page') }}"><button>Sign In as Shop</button></a>
+      </div>   
+    </div>
+
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+    <div class="slideout-menu" id="menu">
+      <div class="slideout-header">
+        <div class="menu-logo">TechCare</div>
+        <button class="close-btn" onclick="toggleMenu()">✕</button>
+      </div>
+      <hr />
+      <h2>Our Services</h2>
+      <div class="service-icons">
+        <div><a href="javascript:void(0);" onclick="checkLoginAndRedirect()"><img src="/images/phone.jpg"></a><p>Phone Repair</p></div>
+        <div><a href="javascript:void(0);" onclick="checkLoginAndRedirect()"><img src="/images/tablet.jpg"></a><p>Tablet Repair</p></div>
+        <div><a href="javascript:void(0);" onclick="checkLoginAndRedirect()"><img src="/images/comp.jpg"></a><p>Computer Repair</p></div>
+        <div><a href="javascript:void(0);" onclick="checkLoginAndRedirect()"><img src="/images/PS 5 Controller.jpg"></a><p>Game Console</p></div>
+        <div><a href="javascript:void(0);" onclick="checkLoginAndRedirect()"><img src="/images/black app icon.jpg"></a><p>Smart Watch</p></div>
+        <div><a href="javascript:void(0);" onclick="checkLoginAndRedirect()"><img src="/images/software.jpg"></a><p>Software Repair</p></div>
+      </div>
+      <hr />
+      <h3>Contact Us</h3>
+      <p>🕒 Monday - Saturday 08.00 - 18.00</p>
+      <p>📍 Karve Nagar ,Pune</p>
+      <p>📧 contact@techcare.com</p>
+      <hr />
+      <h3>About Us</h3>
+      <p>We’re passionate about keeping your gadgets in top shape. Our dedicated team of experienced technicians combines technical expertise with...</p>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>We spark life back into your devices</h1>
+      <p>Your trusted partner in expert device repair. Where quality meets precision, and your gadgets find a second life!</p>
+      <a href="javascript:void(0);" onclick="checkLoginAndRedirect()"><button>Book A Repair</button></a>
+    </div>
+    <div class="hero-img">
+      <img src="/images/homeTop.jpg" alt="Device Graphic">
+    </div>
+  </section>
+
+  <section class="why-choose-us">
+    <h2>Why Choose Us</h2>
+    <div class="features">
+      <div class="feature-item">
+        <span class="checkmark">✔️</span>
+        <h3>Expert Technicians</h3>
+        <p>Our repair team consists of highly skilled and certified technicians with extensive experience in diagnosing and fixing a wide range of issues.</p>
+      </div>
+      <div class="feature-item">
+        <span class="checkmark">✔️</span>
+        <h3>Quick Turnaround</h3>
+        <p>We understand the importance of your device and strive to provide fast and efficient service with quick turnaround times.</p>
+      </div>
+      <div class="feature-item">
+        <span class="checkmark">✔️</span>
+        <h3>Wide Range of Repairs</h3>
+        <p>From screens to batteries, we offer a comprehensive range of repair services for various devices.</p>
+      </div>
+      <div class="feature-item">
+        <span class="checkmark">✔️</span>
+        <h3>Satisfaction Guarantee</h3>
+        <p>Your satisfaction is our priority. We ensure you receive a clear and detailed estimate before we begin any work, and there are no hidden fees.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <h2 style="color: white; font-family:fantasy; font-size: 50px; font-weight: 300;">How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Step 1</h3>
+        <p>Select your repair & request a quote.</p>
+      </div>
+      <div class="step">
+        <h3>Step 2</h3>
+        <p>Send us your gadget or visit our store.</p>
+      </div>
+      <div class="step">
+        <h3>Step 3</h3>
+        <p>Our technicians fix your gadget.</p>
+      </div>
+      <div class="step">
+        <h3>Step 4</h3>
+        <p>We'll request payment and return to you.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="contact">
+      <div class="icon">🎧</div>
+      <p>Contact Us</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSignInOptions() {
+      const options = document.querySelector('.sign-in-options');
+      options.style.display = options.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('open');
+    }
+
+    function checkLoginAndRedirect() {
+      fetch('/check_login')
+        .then(res => res.json())
+        .then(data => {
+          if (data.logged_in) {
+            window.location.href = '/bookslot';
+          } else {
+            window.location.href = '/loginPage?next=bookslot';
+          }
+        });
+    }
+  </script>
+
+</body>
+</html>
